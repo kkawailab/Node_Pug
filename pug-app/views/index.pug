@@ -1,5 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  section.hero
+    .hero-content
+      h1 Welcome to My Portfolio
+      p.tagline Full Stack Developer | Creative Problem Solver
+      .cta-buttons
+        a.btn.btn-primary(href='/projects') View My Work
+        a.btn.btn-secondary(href='/contact') Get In Touch
+  
+  section.highlights
+    .container
+      h2 What I Do
+      .features
+        .feature
+          h3 Web Development
+          p Building responsive and modern web applications using the latest technologies.
+        .feature
+          h3 UI/UX Design
+          p Creating intuitive and beautiful user interfaces that users love.
+        .feature
+          h3 Problem Solving
+          p Tackling complex challenges with creative and efficient solutions.
