@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h1= poll.title
+  
+  if poll.description
+    p.poll-description= poll.description
+  
+  if message
+    .message-box
+      p= message
+  
+  if hasVoted
+    .already-voted
+      p すでにこの投票に参加済みです。
+      a.btn.btn-primary(href=`/polls/${poll.id}/results`) 結果を見る
+  else
+    form(method='post' action=`/polls/${poll.id}/vote`)
+      .options-list
+        each option in poll.options
+          .option-item
+            input(type='radio' name='optionId' value=option.id id=`option-${option.id}` required)
+            label(for=`option-${option.id}`)= option.option_text
+      
+      .form-actions
+        button.btn.btn-primary(type='submit') 投票する
+        a.btn.btn-secondary(href=`/polls/${poll.id}/results`) 結果を見る（投票せずに）
+  
+  .poll-info
+    p 作成日時: #{new Date(poll.created_at).toLocaleString('ja-JP')}

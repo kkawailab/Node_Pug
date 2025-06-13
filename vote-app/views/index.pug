@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 投票アプリへようこそ
+  p このアプリケーションでは、簡単にオンライン投票を作成・管理できます。
+  
+  .hero-section
+    h2 主な機能
+    ul
+      li 投票の作成と管理
+      li リアルタイムの投票結果表示
+      li 重複投票の防止
+      li シンプルで使いやすいインターフェース
+  
+  .cta-buttons
+    a.btn.btn-primary(href='/polls') 投票一覧を見る
+    a.btn.btn-secondary(href='/polls/new') 新しい投票を作成

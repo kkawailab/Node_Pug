@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  h1 #{poll.title} - 投票結果
+  
+  if poll.description
+    p.poll-description= poll.description
+  
+  if message
+    .message-box.success
+      p= message
+  
+  .results-container
+    if poll.totalVotes > 0
+      each option in poll.options
+        .result-item
+          .result-header
+            span.option-text= option.option_text
+            span.vote-count #{option.vote_count}票 (#{option.percentage}%)
+          .result-bar
+            .result-bar-fill(style=`width: ${option.percentage}%`)
+    else
+      p.no-votes まだ投票がありません。
+  
+  .statistics
+    h3 統計情報
+    ul
+      li 総投票数: #{poll.totalVotes || 0}票
+      if stats
+        li ユニーク投票者数: #{stats.unique_voters || 0}人
+        if stats.first_vote
+          li 最初の投票: #{new Date(stats.first_vote).toLocaleString('ja-JP')}
+        if stats.last_vote
+          li 最後の投票: #{new Date(stats.last_vote).toLocaleString('ja-JP')}
+  
+  .actions
+    a.btn.btn-primary(href=`/polls/${poll.id}`) 投票ページに戻る
+    a.btn.btn-secondary(href='/polls') 投票一覧に戻る

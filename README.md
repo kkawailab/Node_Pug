@@ -1,41 +1,69 @@
-# Node.js & Pug Portfolio Site
+# Node.js & Pug Webアプリケーション
 
-Express.jsとPugテンプレートエンジンを使用したシンプルなポートフォリオサイトのサンプルプロジェクトです。
+Express.jsとPugテンプレートエンジンを使用したWebアプリケーションのサンプルプロジェクト集です。
 
 ## 🌟 概要
 
-このリポジトリには、Node.js、Express.js、Pugを使用して作成されたポートフォリオサイトのテンプレートが含まれています。レスポンシブデザインとモダンなUIを備えた、すぐに使えるポートフォリオサイトです。
+このリポジトリには、Node.js、Express.js、Pugを使用して作成された2つのWebアプリケーションサンプルが含まれています：
 
-このプロジェクトの`pug-app`ディレクトリは、[Express application generator](https://expressjs.com/en/starter/generator.html)を使用して作成されました。Express generatorは、Express.jsアプリケーションの基本構造を自動的に生成する公式ツールです。
+1. **ポートフォリオサイト (pug-app)** - レスポンシブデザインとモダンなUIを備えた、すぐに使えるポートフォリオサイト
+2. **投票アプリケーション (vote-app)** - SQLiteを使用したデータ永続化機能を持つオンライン投票システム
+
+両プロジェクトとも[Express application generator](https://expressjs.com/en/starter/generator.html)を使用して作成されました。Express generatorは、Express.jsアプリケーションの基本構造を自動的に生成する公式ツールです。
 
 ## 📁 プロジェクト構造
 
 ```
-Node_Pug/
-└── pug-app/
-    ├── app.js              # Expressアプリケーションのメインファイル
+Express_Pug/
+├── pug-app/               # ポートフォリオサイト
+│   ├── app.js            # Expressアプリケーションのメインファイル
+│   ├── bin/
+│   │   └── www          # サーバー起動スクリプト
+│   ├── package.json     # プロジェクトの依存関係
+│   ├── public/          # 静的ファイル
+│   │   └── stylesheets/
+│   │       └── style.css
+│   ├── routes/          # ルーティング定義
+│   │   └── index.js
+│   ├── views/           # Pugテンプレート
+│   │   ├── layout.pug   # 共通レイアウト
+│   │   ├── index.pug    # ホームページ
+│   │   ├── about.pug    # Aboutページ
+│   │   ├── projects.pug # プロジェクトページ
+│   │   ├── contact.pug  # コンタクトページ
+│   │   └── error.pug    # エラーページ
+│   └── PORTFOLIO_TUTORIAL.md
+│
+└── vote-app/              # 投票アプリケーション
+    ├── app.js            # Expressアプリケーションのメインファイル
     ├── bin/
-    │   └── www            # サーバー起動スクリプト
-    ├── package.json       # プロジェクトの依存関係
-    ├── package-lock.json  # 依存関係のロックファイル
-    ├── public/            # 静的ファイル
+    │   └── www          # サーバー起動スクリプト
+    ├── data/            # SQLiteデータベース
+    ├── models/          # データモデル
+    │   ├── database.js  # DB接続
+    │   ├── poll.js      # 投票モデル
+    │   └── vote.js      # 投票行為モデル
+    ├── package.json     # プロジェクトの依存関係
+    ├── public/          # 静的ファイル
     │   └── stylesheets/
-    │       └── style.css  # カスタムCSSスタイル
-    ├── routes/            # ルーティング定義
-    │   └── index.js       # メインルート
-    ├── views/             # Pugテンプレート
-    │   ├── layout.pug     # 共通レイアウト
-    │   ├── index.pug      # ホームページ
-    │   ├── about.pug      # Aboutページ
-    │   ├── projects.pug   # プロジェクトページ
-    │   ├── contact.pug    # コンタクトページ
-    │   └── error.pug      # エラーページ
-    ├── .gitignore         # Git除外設定
-    └── PORTFOLIO_TUTORIAL.md  # 詳細な作成手順
-
+    │       └── style.css
+    ├── routes/          # ルーティング定義
+    │   ├── index.js
+    │   └── polls.js     # 投票関連ルート
+    ├── views/           # Pugテンプレート
+    │   ├── layout.pug   # 共通レイアウト
+    │   ├── index.pug    # ホームページ
+    │   └── polls/       # 投票関連ビュー
+    │       ├── index.pug    # 投票一覧
+    │       ├── new.pug      # 新規作成
+    │       ├── show.pug     # 投票画面
+    │       └── results.pug  # 結果表示
+    └── VOTING_APP_TUTORIAL.md
 ```
 
-## ✨ 機能
+## ✨ プロジェクトの特徴
+
+### 1. ポートフォリオサイト (pug-app)
 
 - **レスポンシブデザイン**: モバイル、タブレット、デスクトップに対応
 - **モダンなUI**: グラデーションヒーローセクション、カード型レイアウト
@@ -44,8 +72,20 @@ Node_Pug/
   - About: 自己紹介とスキル一覧
   - Projects: プロジェクトのグリッド表示
   - Contact: お問い合わせフォーム
-- **固定ナビゲーションバー**: スムーズなページ間移動
+- **日本語対応**: 全ページが日本語化済み
 - **カスタマイズ可能**: 簡単に内容やスタイルを変更可能
+
+### 2. 投票アプリケーション (vote-app)
+
+- **データ永続化**: SQLiteデータベースによる投票データの保存
+- **投票機能**:
+  - 新規投票の作成（タイトル、説明、複数選択肢）
+  - オンライン投票の実施
+  - リアルタイムの結果表示（パーセンテージとグラフ）
+  - 投票統計の表示（総投票数、ユニーク投票者数など）
+- **セキュリティ**: IPアドレスベースの重複投票防止
+- **レスポンシブUI**: モバイルフレンドリーなデザイン
+- **MVCアーキテクチャ**: モデル、ビュー、コントローラーの明確な分離
 
 ## 🛠️ Express Application Generatorについて
 
@@ -93,12 +133,34 @@ npm install
 - Node.js (v14以上推奨)
 - npm (Node.jsに含まれています)
 
-### インストール手順
+### ポートフォリオサイトのセットアップ
 
 1. リポジトリをクローン
 ```bash
-git clone https://github.com/kkawailab/Node_Pug.git
-cd Node_Pug/pug-app
+git clone https://github.com/kkawailab/Express_Pug.git
+cd Express_Pug/pug-app
+```
+
+2. 依存関係をインストール
+```bash
+npm install
+```
+
+3. アプリケーションを起動
+```bash
+npm start
+```
+
+4. ブラウザでアクセス
+```
+http://localhost:3000
+```
+
+### 投票アプリケーションのセットアップ
+
+1. vote-appディレクトリに移動
+```bash
+cd Express_Pug/vote-app
 ```
 
 2. 依存関係をインストール
@@ -145,14 +207,23 @@ nodemon
 
 ## 📚 技術スタック
 
+### 共通技術
 - **バックエンド**: Node.js, Express.js
 - **テンプレートエンジン**: Pug (旧Jade)
 - **スタイリング**: CSS3
 - **パッケージ管理**: npm
 
+### 投票アプリケーション追加技術
+- **データベース**: SQLite3
+- **ORMドライバー**: better-sqlite3
+- **アーキテクチャ**: MVCパターン
+
 ## 📖 詳細なチュートリアル
 
-このプロジェクトの作成手順について、より詳しい説明は[PORTFOLIO_TUTORIAL.md](pug-app/PORTFOLIO_TUTORIAL.md)をご覧ください。
+各プロジェクトの作成手順について、より詳しい説明は以下のチュートリアルをご覧ください：
+
+- **ポートフォリオサイト**: [PORTFOLIO_TUTORIAL.md](pug-app/PORTFOLIO_TUTORIAL.md)
+- **投票アプリケーション**: [VOTING_APP_TUTORIAL.md](vote-app/VOTING_APP_TUTORIAL.md)
 
 ## 🤝 貢献
 

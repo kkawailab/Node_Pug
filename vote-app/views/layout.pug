@@ -1,0 +1,21 @@
+doctype html
+html(lang='ja')
+  head
+    title= title
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    nav.navbar
+      .container
+        a.logo(href='/') 投票アプリ
+        ul.nav-menu
+          li: a(href='/') ホーム
+          li: a(href='/polls') 投票一覧
+          li: a(href='/polls/new') 新規作成
+    main.content
+      .container
+        block content
+    footer
+      .container
+        p &copy; 2025 投票アプリ - Express & SQLite

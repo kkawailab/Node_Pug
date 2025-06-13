@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+  h1 新規投票作成
+  
+  if error
+    .error-message
+      p= error
+  
+  form(method='post' action='/polls/new')
+    .form-group
+      label(for='title') 投票タイトル
+      input#title(type='text' name='title' required placeholder='例: 好きな果物は？')
+    
+    .form-group
+      label(for='description') 説明（任意）
+      textarea#description(name='description' rows='3' placeholder='投票についての詳細な説明を入力してください')
+    
+    .form-group
+      label(for='options') 選択肢（1行に1つずつ入力）
+      textarea#options(name='options' rows='5' required placeholder='りんご\nオレンジ\nバナナ\nぶどう')
+      small.help-text 最低2つ以上の選択肢を入力してください
+    
+    .form-actions
+      button.btn.btn-primary(type='submit') 投票を作成
+      a.btn.btn-secondary(href='/polls') キャンセル

@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h1 投票一覧
+  
+  if polls && polls.length > 0
+    .polls-grid
+      each poll in polls
+        .poll-card
+          h3= poll.title
+          if poll.description
+            p.description= poll.description
+          .poll-meta
+            p 作成日: #{new Date(poll.created_at).toLocaleDateString('ja-JP')}
+            p 総投票数: #{poll.total_votes || 0}票
+          .poll-actions
+            a.btn.btn-primary(href=`/polls/${poll.id}`) 投票する
+            a.btn.btn-secondary(href=`/polls/${poll.id}/results`) 結果を見る
+  else
+    .empty-state
+      p まだ投票がありません。
+      a.btn.btn-primary(href='/polls/new') 最初の投票を作成する
