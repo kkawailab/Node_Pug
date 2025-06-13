@@ -1,20 +1,21 @@
 doctype html
-html
+html(lang='ja')
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(charset='UTF-8')
   body
     nav.navbar
       .nav-container
-        a.logo(href='/') Portfolio
+        a.logo(href='/') ポートフォリオ
         ul.nav-menu
-          li: a(href='/') Home
-          li: a(href='/about') About
-          li: a(href='/projects') Projects
-          li: a(href='/contact') Contact
+          li: a(href='/') ホーム
+          li: a(href='/about') 自己紹介
+          li: a(href='/projects') プロジェクト
+          li: a(href='/contact') お問い合わせ
     main.content
       block content
     footer
       .footer-container
-        p &copy; 2025 My Portfolio. All rights reserved.
+        p &copy; 2025 マイポートフォリオ. All rights reserved.

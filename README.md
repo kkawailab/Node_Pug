@@ -6,6 +6,8 @@ Express.jsとPugテンプレートエンジンを使用したシンプルなポ�
 
 このリポジトリには、Node.js、Express.js、Pugを使用して作成されたポートフォリオサイトのテンプレートが含まれています。レスポンシブデザインとモダンなUIを備えた、すぐに使えるポートフォリオサイトです。
 
+このプロジェクトの`pug-app`ディレクトリは、[Express application generator](https://expressjs.com/en/starter/generator.html)を使用して作成されました。Express generatorは、Express.jsアプリケーションの基本構造を自動的に生成する公式ツールです。
+
 ## 📁 プロジェクト構造
 
 ```
@@ -45,6 +47,46 @@ Node_Pug/
 - **固定ナビゲーションバー**: スムーズなページ間移動
 - **カスタマイズ可能**: 簡単に内容やスタイルを変更可能
 
+## 🛠️ Express Application Generatorについて
+
+### Express Generatorとは
+Express application generatorは、Express.jsプロジェクトの雛形を自動生成するコマンドラインツールです。プロジェクトの基本的なディレクトリ構造、設定ファイル、および必要な依存関係を含む`package.json`を作成します。
+
+### Express Generatorのインストール方法
+```bash
+npm install -g express-generator
+```
+
+### Express Generatorの使い方
+
+#### 基本的な使用方法
+```bash
+# デフォルト設定でアプリケーションを作成
+express myapp
+
+# Pugテンプレートエンジンを使用する場合（このプロジェクトで使用）
+express --view=pug pug-app
+
+# その他のオプション
+express --help  # ヘルプを表示
+```
+
+#### 利用可能なオプション
+- `--view <engine>`: ビューエンジンを指定（pug, ejs, hbs, hjs, jade, twig, vash）
+- `--css <engine>`: CSSプリプロセッサを追加（less, stylus, compass, sass）
+- `--git`: .gitignoreファイルを追加
+- `--force`: 空でないディレクトリに強制的に作成
+
+### このプロジェクトの作成方法
+このプロジェクトの`pug-app`は以下のコマンドで作成されました：
+```bash
+express --view=pug pug-app
+cd pug-app
+npm install
+```
+
+その後、ポートフォリオサイト用にカスタマイズを行いました。
+
 ## 🚀 セットアップ方法
 
 ### 必要な環境
@@ -72,6 +114,16 @@ npm start
 4. ブラウザでアクセス
 ```
 http://localhost:3000
+```
+
+### 開発モードでの起動
+開発中は、ファイルの変更を監視して自動的にサーバーを再起動するツールを使用することをお勧めします：
+```bash
+# nodemonをインストール（初回のみ）
+npm install -g nodemon
+
+# nodemonで起動
+nodemon
 ```
 
 ## 🎨 カスタマイズ
